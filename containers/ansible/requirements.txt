@@ -1,0 +1,4 @@
+passlib
+hvac
+ansible-lint
+molecule[lint]
