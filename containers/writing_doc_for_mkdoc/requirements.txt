@@ -1,14 +1,14 @@
+### @see https://github.com/mkdocs/mkdocs/wiki
 ## --------------
 ## Themes
 ## --------------
 # Material for MkDocs
 mkdocs-material
-# ReadTheDocs Dropdown for MkDocs
-mkdocs-rtd-dropdown
-# Windmill theme for MkDocs
-mkdocs-windmill
+# MkDocs Bootswatch Themes
+mkdocs-bootswatch
 
 ## --------------
 # Plugins
 ## --------------
-mkdocs-with-pdf
+#mkdocs-print-site-plugin
+
