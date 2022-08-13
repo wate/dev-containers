@@ -10,6 +10,5 @@ mkdocs-bootswatch
 ## --------------
 # Plugins
 ## --------------
-#mkdocs-print-site-plugin
 ## [MkDocs Tooltips](https://roipoussiere.frama.io/mkdocs-tooltips/)
-#mkdocs-tooltips
+mkdocs-tooltips
