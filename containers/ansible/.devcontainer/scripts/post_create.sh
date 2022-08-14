@@ -18,3 +18,4 @@ echo 'eval $(register-python-argcomplete ansible-playbook)' >>~/.bashrc
 echo 'eval $(register-python-argcomplete ansible-pull)' >>~/.bashrc
 echo 'eval $(register-python-argcomplete ansible-vault)' >>~/.bashrc
 source ~/.bashrc
+type "direnv" >/dev/null 2>&1 && [ -f .envrc ] && direnv allow
