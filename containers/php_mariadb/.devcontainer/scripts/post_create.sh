@@ -17,4 +17,3 @@ fi
 if [ -f package.json ] && [ ! -d node_modules ]; then
   npm install
 fi
-

@@ -20,12 +20,12 @@ services:
     restart: unless-stopped
     volumes:
       - ./mariadb/customize.cnf:/etc/mysql/mariadb.conf.d/customize.cnf
-      - ./mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mariadb/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
       - mariadb-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: mariadb
-      # MYSQL_DATABASE: app
-      # MYSQL_USER: app_user
-      # MYSQL_PASSWORD: app_password
+      # MYSQL_DATABASE: app_dev
+      # MYSQL_USER: app_dev_user
+      # MYSQL_PASSWORD: app_dev_password
 volumes:
   mariadb-data:
