@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   app:
     build:
@@ -12,6 +11,8 @@ services:
         VARIANT: "8-bullseye"
         # Optional Node.js version
         NODE_VERSION: "lts/*"
+    environment:
+      TZ: Asia/Tokyo
     volumes:
       - ..:/workspace:cached
     command: sleep infinity
@@ -23,6 +24,7 @@ services:
       - ./mariadb/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
       - mariadb-data:/var/lib/mysql
     environment:
+      TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: mariadb
       # MYSQL_DATABASE: app_dev
       # MYSQL_USER: app_dev_user

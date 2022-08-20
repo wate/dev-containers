@@ -7,6 +7,18 @@ fi
 
 source ~/.bashrc
 
+cat << EOT > ~/.my.cnf
+[mysql]
+auto-rehash
+
+[client]
+host=db
+database=app_dev
+user=app_dev
+password=app_dev_password
+default-character-set=utf8mb4
+EOT
+
 sudo chmod a+x "$(pwd)"
 sudo rm -rf /var/www/html
 sudo ln -s "$(pwd)/webroot" /var/www/html
