@@ -15,6 +15,12 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip \
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
+RUN git clone https://github.com/microsoft/pict.git /usr/local/src/pict \
+    && cd /usr/local/src/pict \
+    && make \
+    && mv /usr/local/src/pict/pict /usr/local/bin/pict \
+    && rm -fr /usr/local/src/pict
+
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends bash-completion tig direnv silversearcher-ag vim exa \
     && a2enmod rewrite
