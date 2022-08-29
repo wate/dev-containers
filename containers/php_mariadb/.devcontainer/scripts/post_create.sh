@@ -24,7 +24,13 @@ EOT
 
 sudo chmod a+x "$(pwd)"
 sudo rm -rf /var/www/html
-sudo ln -s "$(pwd)/webroot" /var/www/html
+WEB_DOC_ROOT=$(pwd)
+if [ -d public ]; then
+  WEB_DOC_ROOT="$(pwd)/public"
+elif [ -d webroot ]; then
+  WEB_DOC_ROOT="$(pwd)/webroot"
+fi
+sudo ln -s "${WEB_DOC_ROOT}" /var/www/html
 
 if [ -f composer.json ] && [ ! -d vendor ]; then
   composer install --no-interaction
