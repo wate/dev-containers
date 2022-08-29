@@ -22,7 +22,7 @@ RUN git clone https://github.com/microsoft/pict.git /usr/local/src/pict \
     && rm -fr /usr/local/src/pict
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends bash-completion tig direnv silversearcher-ag vim exa \
+    && apt-get -y install --no-install-recommends bash-completion tig graphviz direnv silversearcher-ag vim exa \
     && a2enmod rewrite
 
 # [Optional] Uncomment this line to install global node packages.
