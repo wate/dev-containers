@@ -8,9 +8,6 @@ if [ ! -f ~/.inputrc ]; then
     echo "set completion-ignore-case on">~/.inputrc
 fi
 source ~/.bashrc
-if [ -f requirements.txt ]; then
-  pip3 install --user -r requirements.txt
-fi
 if [ ! -e mkdocs.yml ]; then
-  mkdocs new ./
+    mkdocs new ./
 fi
