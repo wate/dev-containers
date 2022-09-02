@@ -1,0 +1,26 @@
+site_name: Sample Document
+theme:
+  name: material
+  language: ja
+# docs_dir: docs
+# site_dir: sites
+# nav:
+#   - Introduction: 'index.md'
+#   - 'about.md'
+#   - 'Issue Tracker': 'https://example.com/'
+# extra_css:
+#   - stylesheets/extra.css
+extra_javascript:
+  # - scripts/extra.js
+  - https://unpkg.com/mermaid@9/dist/mermaid.min.js
+markdown_extensions:
+  - pymdownx.extra
+  - pymdownx.highlight
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.caret
+  - pymdownx.mark
+  - plantuml_markdown
+  - mkdocs_graphviz
+  - md_mermaid 
