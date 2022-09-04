@@ -14,7 +14,15 @@ extra_javascript:
   # - scripts/extra.js
   - https://unpkg.com/mermaid@9/dist/mermaid.min.js
 markdown_extensions:
+  - admonition
   - pymdownx.extra
+    # - pymdownx.betterem
+    # - pymdownx.superfences
+    # - attr_list
+    # - def_list
+    # - tables
+    # - abbr
+    # - md_in_html
   - pymdownx.highlight
   - pymdownx.tilde
   - pymdownx.details
@@ -23,4 +31,4 @@ markdown_extensions:
   - pymdownx.mark
   - plantuml_markdown
   - mkdocs_graphviz
-  - md_mermaid 
+  - md_mermaid
