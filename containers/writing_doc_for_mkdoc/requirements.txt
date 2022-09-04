@@ -14,9 +14,9 @@ mkdocs-bootswatch
 mkdocs-tooltips
 ## [mkdocs-categories-plugin](https://github.com/eddyluten/mkdocs-categories-plugin)
 mkdocs-categories-plugin
+## [mkdocs-alias-plugin](https://github.com/EddyLuten/mkdocs-alias-plugin)
+mkdocs-alias-plugin
 ## [mkdocs-graphviz](https://gitlab.com/rodrigo.schwencke/mkdocs-graphviz]
 mkdocs-graphviz
 ## [PlantUML Extension for Python-Markdown](https://github.com/mikitex70/plantuml-markdown]
 plantuml-markdown
-## [md-mermaid](https://github.com/oruelle/md_mermaid)
-md_mermaid 

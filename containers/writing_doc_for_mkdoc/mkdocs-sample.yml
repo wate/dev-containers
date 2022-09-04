@@ -1,34 +1,41 @@
-site_name: Sample Document
+---
+site_name: Redmine Database Schema
 theme:
   name: material
-  language: ja
-# docs_dir: docs
-# site_dir: site
 # nav:
 #   - Introduction: 'index.md'
 #   - 'about.md'
 #   - 'Issue Tracker': 'https://example.com/'
-# extra_css:
-#   - stylesheets/extra.css
-extra_javascript:
-  # - scripts/extra.js
-  - https://unpkg.com/mermaid@9/dist/mermaid.min.js
+# docs_dir: docs
+# site_dir: site
+# extra_javascript:
+#   - scripts/extra.js
+extra_css:
+  - https://cdn.jsdelivr.net/npm/hint.css/hint.min.css
+  # - stylesheets/extra.css
 markdown_extensions:
+  - footnotes
+  - attr_list
+  - def_list
+  - tables
+  - abbr
+  - md_in_html
   - admonition
-  - pymdownx.extra
-    # - pymdownx.betterem
-    # - pymdownx.superfences
-    # - attr_list
-    # - def_list
-    # - tables
-    # - abbr
-    # - md_in_html
-  - pymdownx.highlight
-  - pymdownx.tilde
-  - pymdownx.details
-  - pymdownx.snippets
+  - pymdownx.betterem
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.caret
   - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - plantuml_markdown
   - mkdocs_graphviz
-  - md_mermaid
+plugins:
+  - tooltips
