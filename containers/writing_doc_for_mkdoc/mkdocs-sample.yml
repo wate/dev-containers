@@ -2,6 +2,12 @@
 site_name: サンプルドキュメント
 theme:
   name: material
+  language: ja
+  # features:
+  #   - navigation.tabs
+  #   - navigation.tabs.sticky
+  #   - navigation.sections
+  #   - navigation.expand
 # nav:
 #   - Introduction: 'index.md'
 #   - 'about.md'
@@ -38,4 +44,6 @@ markdown_extensions:
   - plantuml_markdown
   - mkdocs_graphviz
 plugins:
+  - search
+  - tags
   - tooltips
