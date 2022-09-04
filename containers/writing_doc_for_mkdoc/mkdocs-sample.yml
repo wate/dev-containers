@@ -3,7 +3,7 @@ theme:
   name: material
   language: ja
 # docs_dir: docs
-# site_dir: sites
+# site_dir: site
 # nav:
 #   - Introduction: 'index.md'
 #   - 'about.md'

@@ -4,9 +4,6 @@ fi
 if type "exa" >/dev/null 2>&1; then
     echo 'alias ls="exa --git --header"' >>~/.bashrc
 fi
-if [ -f /usr/local/share/nvm/nvm.sh ]; then
-    echo "source /usr/local/share/nvm/nvm.sh" >>~/.bashrc
-fi
 if [ ! -f ~/.inputrc ]; then
     echo "set completion-ignore-case on">~/.inputrc
 fi
