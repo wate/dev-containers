@@ -16,6 +16,9 @@ services:
     volumes:
       - ..:/workspace:cached
     command: sleep infinity
+    network_mode: service:db
+    depends_on:
+      - db
   db:
     image: mariadb:10.5
     restart: unless-stopped
