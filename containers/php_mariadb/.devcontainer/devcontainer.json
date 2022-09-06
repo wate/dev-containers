@@ -18,6 +18,7 @@
                 "xdebug.php-debug",
                 "bmewburn.vscode-intelephense-client",
                 "mrmlnc.vscode-apache",
+                "DavidAnson.vscode-markdownlint",
                 "redhat.vscode-yaml",
                 "redhat.ansible"
             ]

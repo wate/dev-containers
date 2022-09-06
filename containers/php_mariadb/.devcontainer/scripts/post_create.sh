@@ -37,6 +37,9 @@ multi_line = False
 
 # Enable the pager on startup.
 enable_pager = False
+
+# Skip intro info on startup and outro info on exit
+less_chatty = True
 EOT
 
 sudo chmod a+x "$(pwd)"
