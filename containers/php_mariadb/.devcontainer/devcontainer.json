@@ -9,6 +9,9 @@
                 "php.validate.executablePath": "/usr/local/bin/php",
                 "yaml.schemas": {
                     "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+                },
+                "files.associations": {
+                    "deploy.yml": "ansible"
                 }
             },
             "extensions": [
@@ -19,6 +22,7 @@
                 "bmewburn.vscode-intelephense-client",
                 "mrmlnc.vscode-apache",
                 "DavidAnson.vscode-markdownlint",
+                "hediet.vscode-drawio",
                 "redhat.vscode-yaml",
                 "redhat.ansible"
             ]
