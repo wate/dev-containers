@@ -6,6 +6,7 @@ if type "exa" >/dev/null 2>&1; then
 fi
 if type "tbls" >/dev/null 2>&1; then
     echo 'export TBLS_DSN=mariadb://app_dev:app_dev_password@db:3306/app_dev' >>~/.bashrc
+    echo 'export TBLS_DOC_PATH=docs/schema' >>~/.bashrc
 fi
 if [ ! -f ~/.inputrc ]; then
     echo "set completion-ignore-case on">~/.inputrc
