@@ -17,8 +17,8 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 
 # Install tbls
 RUN go install github.com/k1LoW/tbls@main \
-    && mv /root/go/bin/tbls /usr/local/bin/tbls \
-    && rm -fr /root/go
+    && mv ~/go/bin/tbls /usr/local/bin/tbls \
+    && rm -fr ~/go
 
 # Install pict
 RUN git clone https://github.com/microsoft/pict.git /usr/local/src/pict \
