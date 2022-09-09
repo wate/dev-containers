@@ -47,5 +47,6 @@
 	],
 	"postCreateCommand": "bash .devcontainer/scripts/post_create.sh",
 	"postStartCommand": "bash .devcontainer/scripts/post_start.sh",
+	"shutdownAction": "stopContainer",
 	"remoteUser": "vscode"
 }
