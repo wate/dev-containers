@@ -8,5 +8,5 @@ if [ ! -f ~/.inputrc ]; then
     echo "set completion-ignore-case on">~/.inputrc
 fi
 if [ -f requirements.txt ]; then
-    pip3 install --user -r requirements.txt
+    pip3 install --user --disable-pip-version-check --no-cache-dir -r requirements.txt
 fi
