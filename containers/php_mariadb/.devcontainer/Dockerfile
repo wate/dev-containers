@@ -2,8 +2,9 @@
 ARG VARIANT=8-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/php:0-${VARIANT}
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y mariadb-client libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev \
+RUN echo 'deb http://deb.debian.org/debian bullseye-backports main' > /etc/apt/sources.list.d/backports.list \
+    && apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y -t bullseye-backports mariadb-client libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev golang \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip \
@@ -14,15 +15,20 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip \
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
+# Install tbls
+RUN go install github.com/k1LoW/tbls@main \
+    && mv /root/go/bin/tbls /usr/local/bin/tbls \
+    && rm -fr /root/go
+
+# Install pict
 RUN git clone https://github.com/microsoft/pict.git /usr/local/src/pict \
-    && cd /usr/local/src/pict \
-    && make \
+    && cd /usr/local/src/pict && make \
     && mv /usr/local/src/pict/pict /usr/local/bin/pict \
     && rm -fr /usr/local/src/pict
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends bash-completion tig graphviz direnv silversearcher-ag vim exa python3-pip \
-    && pip install lizard \
+    && apt-get -y install --no-install-recommends bash-completion tig git-flow graphviz direnv silversearcher-ag vim exa python3-pip \
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
     && a2enmod rewrite \
 
 # [Optional] Uncomment this line to install global node packages.

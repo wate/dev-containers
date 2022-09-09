@@ -4,11 +4,24 @@ fi
 if type "exa" >/dev/null 2>&1; then
     echo 'alias ls="exa --git --header"' >>~/.bashrc
 fi
+if type "tbls" >/dev/null 2>&1; then
+    echo 'export TBLS_DSN=mariadb://app_dev:app_dev_password@db:3306/app_dev' >>~/.bashrc
+fi
 if [ ! -f ~/.inputrc ]; then
     echo "set completion-ignore-case on">~/.inputrc
 fi
+if [ ! -f ~/.bash-git-prompt ]; then
+    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+    cat << EOT >>~/.bashrc
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source $HOME/.bash-git-prompt/gitprompt.sh
+fi
+EOT
 
-pip install mycli ansible mkdocs-material --user
+fi
+
+pip install --user mycli lizard mkdocs-material ansible
 
 source ~/.bashrc
 
@@ -23,6 +36,7 @@ user=app_dev
 password=app_dev_password
 default-character-set=utf8mb4
 EOT
+
 cat << EOT >~/.myclirc
 [main]
 # Enables context sensitive auto-completion. If this is disabled then all
