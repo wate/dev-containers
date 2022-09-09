@@ -9,9 +9,9 @@
 			// Use -bullseye variants on local on arm64/Apple Silicon.
 			"PYTHON_VARIANT": "3.10-bullseye",
 			// Update 'ANSIBLE_VARIANT' to pick your desired ansible variant: ansible, ansible-core, ansible-base
-			"ANSIBLE_VARIANT": "ansible-core",
-			// Update 'ANSILBE_VERSION' to choose the version of your variant (for example): 2.9.*, 2.10.*, 2.11.*, 2.12.*
-			"ANSIBLE_VERSION": "2.13.*",
+			"ANSIBLE_VARIANT": "ansible",
+			// Update 'ANSILBE_VERSION' to choose the version of your variant (for example): 2.9.*, 2.10.*, 2.11.*, 2.12.*, 2.13.*
+			"ANSIBLE_VERSION": "6.*",
 			"NODE_VERSION": "lts/*"
 		}
 	},
@@ -45,5 +45,6 @@
 	// "forwardPorts": [],
 	"postCreateCommand": "bash ./.devcontainer/scripts/post_create.sh",
 	"postStartCommand": "bash ./.devcontainer/scripts/post_start.sh",
+	"shutdownAction": "stopContainer",
 	"remoteUser": "vscode"
 }
