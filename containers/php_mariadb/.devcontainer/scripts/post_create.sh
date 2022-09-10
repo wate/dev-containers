@@ -22,7 +22,7 @@ EOT
 
 fi
 
-pip install --user mycli lizard mkdocs-material ansible
+pip install --user mycli ansible mkdocs-material lizard
 
 source ~/.bashrc
 
@@ -72,4 +72,8 @@ if [ -f composer.json ] && [ ! -d vendor ]; then
 fi
 if [ -f package.json ] && [ ! -d node_modules ]; then
     npm install
+fi
+
+if [ -f "$(dirname $0)/post_create.yml" ]; then
+    ansible-playbook  -i 127.0.0.1, -c local --diff "$(dirname $0)/post_create.yml"
 fi
