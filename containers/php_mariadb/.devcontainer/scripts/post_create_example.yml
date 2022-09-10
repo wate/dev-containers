@@ -1,0 +1,184 @@
+---
+- name: Setup devcontainer
+  hosts: all
+  become: false
+  vars:
+    tbls_dsn: mariadb://app_dev:app_dev_password@db:3306/app_dev
+    tbls_doc_path: docs/schema
+    base_dir: "{{ ansible_facts['env']['PWD'] | dirname | dirname }}"
+    doc_root: "{{ ansible_facts['env']['PWD'] | dirname | dirname }}"
+  tasks:
+    - name: direnvの存在確認
+      ansible.builtin.shell:
+        cmd: type direnv
+      register: direnv_result
+      failed_when: false
+      changed_when: false
+    - name: direnvのセットアップ
+      ansible.builtin.lineinfile:
+        path: ~/.bashrc
+        line: 'eval "$(direnv hook bash)"'
+      when: direnv_result.rc == 0
+    - name: exaの存在確認
+      ansible.builtin.shell:
+        cmd: type exa
+      register: exa_result
+      failed_when: false
+      changed_when: false
+    - name: エイリアスの設定
+      ansible.builtin.lineinfile:
+        path: ~/.bashrc
+        regexp: ^alias ls=
+        line: 'alias ls="exa --git --header"'
+      when: exa_result.rc == 0
+    - name: tblsの存在確認
+      ansible.builtin.shell:
+        cmd: type tbls
+      register: tbls_result
+      failed_when: false
+      changed_when: false
+    - name: tblsの環境変数の設定
+      block:
+        - name: DSNの設定
+          ansible.builtin.lineinfile:
+            path: ~/.bashrc
+            regexp: ^export TBLS_DSN=
+            line: 'export TBLS_DSN="{{ tbls_dsn }}"'
+        - name: 出力先ディレクトリの設定
+          ansible.builtin.lineinfile:
+            path: ~/.bashrc
+            regexp: ^export TBLS_DOC_PATH=
+            line: 'export TBLS_DOC_PATH="{{ tbls_doc_path }}"'
+      when: tbls_result.rc == 0
+    - name: tab補完実行時に大文字/小文字を無視するように設定
+      ansible.builtin.lineinfile:
+        path: ~/.inputrc
+        regexp: ^set completion-ignore-case
+        line: set completion-ignore-case on
+        create: true
+    - name: bash-git-promptのインストール
+      ansible.builtin.git:
+        repo: https://github.com/magicmonty/bash-git-prompt.git
+        dest: ~/.bash-git-prompt
+        depth: 1
+    - name: bash-git-promptの設定
+      ansible.builtin.blockinfile:
+        path: ~/.bashrc
+        marker: “# {mark} bash-git-prompt ANSIBLE MANAGED BLOCK”
+        content: |
+          if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+              GIT_PROMPT_ONLY_IN_REPO=1
+              source $HOME/.bash-git-prompt/gitprompt.sh
+          fi
+    - name: pipパッケージのインストール
+      ansible.builtin.pip:
+        name:
+          - mycli
+          - mkdocs-material
+          - lizard
+        extra_args: --user
+    - name: MySQLの設定
+      community.general.ini_file:
+        path: ~/.my.cnf
+        section: "{{ item.section }}"
+        option: "{{ item.option }}"
+        value: "{{ item.value | default(omit) }}"
+        allow_no_value: "{{ item.value is undefined }}"
+        create: true
+      loop:
+        - section: mysql
+          option: auto-rehash
+        - section: client
+          option: host
+          value: db
+        - section: client
+          option: database
+          value: app_dev
+        - section: client
+          option: user
+          value: app_dev
+        - section: client
+          option: password
+          value: app_dev_password
+        - section: client
+          option: default-character-set
+          value: utf8mb4
+    - name: mycliの設定
+      community.general.ini_file:
+        path: ~/.myclirc
+        section: "{{ item.section }}"
+        option: "{{ item.option }}"
+        value: "{{ item.value | default(omit) }}"
+        allow_no_value: "{{ item.value is undefined }}"
+        create: true
+      loop:
+        - section: main
+          option: smart_completion
+          value: "True"
+        - section: main
+          option: multi_line
+          value: "False"
+        - section: main
+          option: enable_pager
+          value: "False"
+        - section: main
+          option: less_chatty
+          value: "True"
+    - name: ドキュメントルートの設定
+      block:
+        - name: アクセス権の変更
+          ansible.builtin.file:
+            path: "{{ base_dir }}"
+            mode: "a+x"
+        - name: ドキュメントルートディレクトリの状態をチェック
+          ansible.builtin.stat:
+            path: /var/www/html
+          register: stat_result
+        - name: ドキュメントルートディレクトリを削除
+          ansible.builtin.file:
+            path: /var/www/html
+            state: absent
+          when: stat_result.stat.isdir
+        - name: publicディレクトリの存在確認
+          ansible.builtin.stat:
+            path: "{{ base_dir }}/public"
+          register: public_dir_result
+        - name: doc_root変数を上書き
+          ansible.builtin.set_fact:
+            doc_root: "{{ base_dir }}/public"
+          when: public_dir_result.stat.exists
+        - name: webrootディレクトリの存在確認
+          ansible.builtin.stat:
+            path: "{{ base_dir }}/webroot"
+          register: webroot_dir_result
+        - name: doc_root変数を上書き
+          ansible.builtin.set_fact:
+            doc_root: "{{ base_dir }}/webroot"
+          when:
+            - not public_dir_result.stat.exists
+            - webroot_dir_result.stat.exists
+        - name: シンボリックリンクの作成
+          ansible.builtin.file:
+            path: /var/www/html
+            src: "{{ doc_root }}"
+            state: link
+      become: true
+    - name: composer.jsonの存在確認
+      ansible.builtin.stat:
+        path: "{{ base_dir }}/composer.json"
+      register: composer_json_result
+    - name: 依存パッケージのインストール(PHP)
+      community.general.composer:
+        command: install
+        no_dev: false
+        working_dir: "{{ base_dir }}"
+      when: composer_json_result.stat.exists
+    - name: package.jsonの存在確認
+      ansible.builtin.stat:
+        path: "{{ base_dir }}/package.json"
+      register: package_json_result
+    - name: 依存パッケージのインストール(node.js)
+      community.general.npm:
+        path: "{{ base_dir }}"
+        state: present
+      when: package_json_result.stat.exists
