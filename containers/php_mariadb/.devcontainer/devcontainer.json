@@ -11,7 +11,8 @@
                     "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
                 },
                 "files.associations": {
-                    "deploy.yml": "ansible"
+                    "deploy.yml": "ansible",
+                    "release.yml": "ansible"
                 }
             },
             "extensions": [

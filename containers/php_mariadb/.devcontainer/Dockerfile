@@ -2,7 +2,8 @@
 ARG VARIANT=8-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/php:0-${VARIANT}
 
-RUN echo 'deb http://deb.debian.org/debian bullseye-backports main' > /etc/apt/sources.list.d/backports.list \
+RUN . /etc/os-release \
+    && echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" > /etc/apt/sources.list.d/backports.list \
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y -t bullseye-backports mariadb-client libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev golang \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
