@@ -28,8 +28,8 @@ RUN git clone https://github.com/microsoft/pict.git /usr/local/src/pict \
     && rm -fr /usr/local/src/pict
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends bash-completion tig git-flow graphviz direnv silversearcher-ag vim exa python3-pip \
-    && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
+    && apt-get -y install --no-install-recommends bash-completion tig git-flow graphviz direnv silversearcher-ag vim exa bat fd-find python3-pip fonts-ipafont fonts-ipaexfont fonts-noto-cjk \
+    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
     && a2enmod rewrite \
 
 # [Optional] Uncomment this line to install global node packages.

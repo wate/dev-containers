@@ -38,6 +38,8 @@
 				"yzhang.markdown-all-in-one",
 				"DavidAnson.vscode-markdownlint",
 				"shd101wyy.markdown-preview-enhanced",
+				"jebbs.plantuml",
+				"bierner.markdown-mermaid",
 				"bierner.github-markdown-preview"
 			]
 		}

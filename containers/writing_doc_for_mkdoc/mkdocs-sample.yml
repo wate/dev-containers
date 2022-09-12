@@ -42,7 +42,17 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - plantuml_markdown
-  - mkdocs_graphviz
+  - mkdocs_graphviz:
+        light_theme: 000000
+        dark_theme: FFFFFF
+        color: 789ABC
+        bgcolor: none
+        graph_color: 789ABC
+        graph_fontcolor: 789ABC
+        node_color: 789ABC
+        node_fontcolor: 789ABC
+        edge_color: 789ABC
+        edge_fontcolor: 789ABC
 plugins:
   - search
   - tags
