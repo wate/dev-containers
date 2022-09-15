@@ -4,6 +4,9 @@ fi
 if type "exa" >/dev/null 2>&1; then
     echo 'alias ls="exa --git --header"' >>~/.bashrc
 fi
+if type "npm" >/dev/null 2>&1; then
+    echo 'eval "$(npm completion)"' >>~/.bashrc
+fi
 if type "tbls" >/dev/null 2>&1; then
     echo 'export TBLS_DSN="mariadb://app_dev:app_dev_password@db:3306/app_dev"' >>~/.bashrc
     echo 'export TBLS_DOC_PATH="docs/schema"' >>~/.bashrc
