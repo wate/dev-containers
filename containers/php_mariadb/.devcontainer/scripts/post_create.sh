@@ -4,8 +4,16 @@ fi
 if type "exa" >/dev/null 2>&1; then
     echo 'alias ls="exa --git --header"' >>~/.bashrc
 fi
+if type "composer" >/dev/null 2>&1; then
+    echo 'eval "$(composer completion)"' >>~/.bashrc
+fi
 if type "npm" >/dev/null 2>&1; then
     echo 'eval "$(npm completion)"' >>~/.bashrc
+fi
+if type "yarn" >/dev/null 2>&1; then
+    mkdir -p "${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/"
+    curl -o "${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/yarn" \
+    https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
 fi
 if type "tbls" >/dev/null 2>&1; then
     echo 'export TBLS_DSN="mariadb://app_dev:app_dev_password@db:3306/app_dev"' >>~/.bashrc
