@@ -11,8 +11,8 @@ if type "npm" >/dev/null 2>&1; then
     echo 'eval "$(npm completion)"' >>~/.bashrc
 fi
 if type "yarn" >/dev/null 2>&1; then
-    mkdir -p "${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/"
-    curl -o "${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/yarn" \
+    mkdir -p "${HOME}/.local/share/bash-completion/completions/"
+    curl -s -o "${HOME}/.local/share/bash-completion/completions/yarn" \
     https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
 fi
 if type "tbls" >/dev/null 2>&1; then
