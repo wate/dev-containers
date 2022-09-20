@@ -10,6 +10,36 @@ fi
 if type "npm" >/dev/null 2>&1; then
     echo 'eval "$(npm completion)"' >>~/.bashrc
 fi
+if type "yarn" >/dev/null 2>&1; then
+    mkdir -p "${HOME}/.local/share/bash-completion/completions/"
+    curl -s -o "${HOME}/.local/share/bash-completion/completions/yarn" \
+    https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
+fi
+if type "gem" >/dev/null 2>&1; then
+    mkdir -p "${HOME}/.local/share/bash-completion/completions/"
+    curl -s -o "${HOME}/.local/share/bash-completion/completions/gem" \
+    https://raw.githubusercontent.com/mernen/completion-ruby/main/completion-gem
+fi
+if type "rails" >/dev/null 2>&1; then
+    mkdir -p "${HOME}/.local/share/bash-completion/completions/"
+    curl -s -o "${HOME}/.local/share/bash-completion/completions/rails" \
+    https://raw.githubusercontent.com/mernen/completion-ruby/main/completion-rails
+fi
+if type "rake" >/dev/null 2>&1; then
+    mkdir -p "${HOME}/.local/share/bash-completion/completions/"
+    curl -s -o "${HOME}/.local/share/bash-completion/completions/rake" \
+    https://raw.githubusercontent.com/mernen/completion-ruby/main/completion-rake
+fi
+if type "bundle" >/dev/null 2>&1; then
+    mkdir -p "${HOME}/.local/share/bash-completion/completions/"
+    curl -s -o "${HOME}/.local/share/bash-completion/completions/bundle" \
+    https://raw.githubusercontent.com/mernen/completion-ruby/main/completion-bundle
+fi
+if type "ruby" >/dev/null 2>&1; then
+    mkdir -p "${HOME}/.local/share/bash-completion/completions/"
+    curl -s -o "${HOME}/.local/share/bash-completion/completions/ruby" \
+    https://raw.githubusercontent.com/mernen/completion-ruby/main/completion-ruby
+fi
 if type "tbls" >/dev/null 2>&1; then
     echo 'export TBLS_DSN="mariadb://app_dev:app_dev_password@db:3306/app_dev"' >>~/.bashrc
 fi
@@ -70,8 +100,8 @@ fi
 echo "Execute:rails db:migrate"
 rails db:migrate
 
-# echo "Execute:rails redmine:load_default_data"
-# rails redmine:load_default_data
+echo "Execute:rails redmine:load_default_data"
+rails redmine:load_default_data
 
 echo "Execute:rails redmine:plugins:migrate"
 rails redmine:plugins:migrate
