@@ -16,6 +16,10 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip \
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
+# Install SSH Server
+RUN bash -c "$(curl -fsSL "https://raw.githubusercontent.com/microsoft/vscode-dev-containers/main/script-library/sshd-debian.sh")" \
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
 # Install tbls
 RUN go install github.com/k1LoW/tbls@main \
     && mv ~/go/bin/tbls /usr/local/bin/tbls \
@@ -30,8 +34,9 @@ RUN git clone https://github.com/microsoft/pict.git /usr/local/src/pict \
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends bash-completion tig git-flow graphviz direnv silversearcher-ag vim exa bat fd-find python3-pip fonts-ipafont fonts-ipaexfont fonts-noto-cjk \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
-    && a2enmod rewrite \
+    && a2enmod rewrite
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
+ENTRYPOINT ["/usr/local/share/ssh-init.sh"]
