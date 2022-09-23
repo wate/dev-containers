@@ -25,7 +25,7 @@ RUN go install github.com/k1LoW/tbls@main \
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends bash-completion tig direnv silversearcher-ag vim exa python3-pip fonts-ipafont fonts-ipaexfont fonts-noto-cjk \
-    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
+    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # [Optional] Uncomment this line to install additional gems.
 # RUN gem install <your-gem-names-here>

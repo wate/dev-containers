@@ -1,6 +1,7 @@
 #!/bin/bash -e
 BASE_DIR=$(pwd)
 readonly BASE_DIR
+echo "$(whoami):$(whoami)" | sudo chpasswd
 if type "direnv" >/dev/null 2>&1; then
     echo 'eval "$(direnv hook bash)"' >>~/.bashrc
 fi
@@ -83,19 +84,19 @@ less_chatty = True
 EOT
 
 if [ ! -e "${BASE_DIR}/config/database.yml" ]; then
-  echo "Copy database.yml"
-  cp ${BASE_DIR}/.devcontainer/redmine/database.yml ${BASE_DIR}/config/database.yml
+    echo "Copy database.yml"
+    cp ${BASE_DIR}/.devcontainer/redmine/database.yml ${BASE_DIR}/config/database.yml
 fi
 if [ ! -e "${BASE_DIR}/Gemfile.local" ]; then
-  echo "Copy Gemfile.local"
-  cp ${BASE_DIR}/.devcontainer/redmine/Gemfile.local ${BASE_DIR}/Gemfile.local
+    echo "Copy Gemfile.local"
+    cp ${BASE_DIR}/.devcontainer/redmine/Gemfile.local ${BASE_DIR}/Gemfile.local
 fi
 
 echo "Execute:bundle install"
 bundle install
 if [ ! -e "${BASE_DIR}/config/initializers/secret_token.rb" ]; then
-  echo "Execute:rails generate_secret_token"
-  rails generate_secret_token
+    echo "Execute:rails generate_secret_token"
+    rails generate_secret_token
 fi
 echo "Execute:rails db:migrate"
 rails db:migrate

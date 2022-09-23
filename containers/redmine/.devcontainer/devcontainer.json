@@ -12,6 +12,7 @@
 		}
 	},
 	"forwardPorts": [
+		2222,
 		3000,
 		3306
 	],
@@ -21,5 +22,8 @@
 	"postCreateCommand": "if [ -f ./.devcontainer/scripts/post_create.sh ]; then bash ./.devcontainer/scripts/post_create.sh; fi",
 	"postStartCommand": "if [ -f ./.devcontainer/scripts/post_start.sh ]; then bash ./.devcontainer/scripts/post_start.sh; fi",
 	"shutdownAction": "stopCompose",
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"features": {
+		"sshd": "latest"
+	}
 }
