@@ -12,10 +12,14 @@ theme:
 #   - Introduction: 'index.md'
 #   - 'about.md'
 #   - 'Issue Tracker': 'https://example.com/'
+#   - examples:
+#     - "examples/sample1.md"
+#     - "examples/sample2.md"
+#     - "examples/sample3.md"
 # docs_dir: docs
 # site_dir: site
 # extra_javascript:
-#   - scripts/extra.js
+#   - javascripts/extra.js
 extra_css:
   - https://cdn.jsdelivr.net/npm/hint.css/hint.min.css
   # - stylesheets/extra.css
@@ -43,16 +47,16 @@ markdown_extensions:
   - pymdownx.snippets
   - plantuml_markdown
   - mkdocs_graphviz:
-        light_theme: 000000
-        dark_theme: FFFFFF
-        color: 789ABC
-        bgcolor: none
-        graph_color: 789ABC
-        graph_fontcolor: 789ABC
-        node_color: 789ABC
-        node_fontcolor: 789ABC
-        edge_color: 789ABC
-        edge_fontcolor: 789ABC
+      light_theme: 000000
+      dark_theme: FFFFFF
+      color: 789ABC
+      bgcolor: none
+      graph_color: 789ABC
+      graph_fontcolor: 789ABC
+      node_color: 789ABC
+      node_fontcolor: 789ABC
+      edge_color: 789ABC
+      edge_fontcolor: 789ABC
 plugins:
   - search
   - tags
