@@ -1,6 +1,8 @@
 #!/bin/bash -e
 BASE_DIR=$(pwd)
 readonly BASE_DIR
+SCRIPT_DIR=$(dirname $0)
+readonly SCRIPT_DIR
 echo "$(whoami):$(whoami)" | sudo chpasswd
 if type "direnv" >/dev/null 2>&1; then
     echo 'eval "$(direnv hook bash)"' >>~/.bashrc
@@ -48,7 +50,7 @@ if [ ! -f ~/.inputrc ]; then
     echo "set completion-ignore-case on">~/.inputrc
 fi
 
-pip install --user mycli
+pip install --user mycli ansible ansible-lint
 
 source ~/.bashrc
 
@@ -96,16 +98,20 @@ echo "Execute:bundle install"
 bundle install
 if [ ! -e "${BASE_DIR}/config/initializers/secret_token.rb" ]; then
     echo "Execute:rails generate_secret_token"
-    rails generate_secret_token
+    rake generate_secret_token
 fi
 echo "Execute:rails db:migrate"
-rails db:migrate
+rake db:migrate
 
-echo "Execute:rails redmine:load_default_data"
-rails redmine:load_default_data
+# echo "Execute:rails redmine:load_default_data"
+# rake redmine:load_default_data
 
 echo "Execute:rails redmine:plugins:migrate"
-rails redmine:plugins:migrate
+rake redmine:plugins:migrate
 
 echo "Execute:rails r ${BASE_DIR}/.devcontainer/redmine/admin_must_change_passwd_false.rb"
 rails r ${BASE_DIR}/.devcontainer/redmine/admin_must_change_passwd_false.rb
+
+if [ -f "${SCRIPT_DIR}/post_create.yml" ]; then
+    ansible-playbook -i 127.0.0.1, -c local --diff "${SCRIPT_DIR}/post_create.yml"
+fi
