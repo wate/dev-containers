@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+if [ -f package.json ] && [ ! -e node_modules ]; then
+    npm install
+fi
 if type "direnv" >/dev/null 2>&1 && [ -f .envrc ]; then
     direnv allow
 fi
