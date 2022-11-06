@@ -1,0 +1,83 @@
+---
+site_name: サンプルドキュメント
+theme:
+  name: material
+  language: ja
+  # features:
+  #   - navigation.tabs
+  #   - navigation.tabs.sticky
+  #   - navigation.sections
+  #   - navigation.expand
+# nav:
+#   - Introduction: 'index.md'
+#   - 'about.md'
+#   - 'Issue Tracker': 'https://example.com/'
+#   - サンプル集:
+#     - サンプル1: examples/sample1.md
+#     - サンプル2: examples/sample2.md
+#     - サンプル3: examples/sample3.md
+# docs_dir: docs
+# site_dir: site
+# extra_javascript:
+#   - javascripts/extra.js
+extra_css:
+  - https://cdn.jsdelivr.net/npm/hint.css/hint.min.css
+  - stylesheets/extra.css
+markdown_extensions:
+  - abbr
+  - footnotes
+  - attr_list
+  - def_list
+  - tables
+  - md_in_html
+  - admonition
+  - pymdownx.betterem
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      # auto_append:
+      #   - includes/abbreviations.md
+      #   - includes/links.md
+  # https://github.com/mikitex70/plantuml-markdown
+  - plantuml_markdown
+  # https://roipoussiere.frama.io/mkdocs-tooltips/
+  - mkdocs_graphviz:
+      light_theme: 000000
+      dark_theme: FFFFFF
+      color: none
+      bgcolor: none
+      graph_color: none
+      graph_fontcolor: none
+      node_color: none
+      node_fontcolor: none
+      edge_color: none
+      edge_fontcolor: none
+
+plugins:
+  - search
+  - tags
+  # https://roipoussiere.frama.io/mkdocs-tooltips/
+  - tooltips
+
+# ```css stylesheets/extra.css
+# [class*=hint--] {
+#   border-bottom: 0.05rem dotted var(--md-default-fg-color--light);
+# }
+# [class*=hint--]:hover {
+#   cursor: help;
+#   text-decoration: none;
+# }
+# .md-grid {
+#   max-width: 80rem;
+# }
+# ```
