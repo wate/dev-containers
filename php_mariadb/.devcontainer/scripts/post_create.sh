@@ -35,7 +35,7 @@ EOT
 
 fi
 
-pip install --user mycli ansible mkdocs-material mkdocs-tooltips mkdocs-graphviz plantuml-markdown lizard
+pip install --user mycli ansible mkdocs-material mkdocs-tooltips mkdocs-graphviz plantuml-markdown lizard pre-commit
 
 source ~/.bashrc
 
