@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if type "direnv" >/dev/null 2>&1; then
     echo 'eval "$(direnv hook bash)"' >>~/.bashrc
 fi

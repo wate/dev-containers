@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 BASE_DIR=$(pwd)
 readonly BASE_DIR
 SCRIPT_DIR=$(dirname $0)

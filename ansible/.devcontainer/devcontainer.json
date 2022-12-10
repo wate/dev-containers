@@ -11,7 +11,7 @@
 			// Update 'ANSIBLE_VARIANT' to pick your desired ansible variant: ansible, ansible-core, ansible-base
 			"ANSIBLE_VARIANT": "ansible",
 			// Update 'ANSILBE_VERSION' to choose the version of your variant (for example): 2.9.*, 2.10.*, 2.11.*, 2.12.*, 2.13.*
-			"ANSIBLE_VERSION": "6.*",
+			"ANSIBLE_VERSION": "7.*",
 			"NODE_VERSION": "lts/*"
 		}
 	},
