@@ -9,6 +9,7 @@
 
 # Ansible-lint does not fail on warnings from the rules or tags listed below
 warn_list:
+  ## ansible-lint default
   - avoid-implicit
   - experimental
   - fqcn[action]
