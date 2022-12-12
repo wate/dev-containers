@@ -1,8 +1,0 @@
----
-filters: {}
-rules:
-  preset-ja-technical-writing: true
-  preset-ja-spacing: true
-  prh:
-    rulePaths:
-      - prh.yml
