@@ -17,7 +17,7 @@ warn_list:
   - name[casing]
   - name[play]
   - name[prefix]
-  - role-name,
+  - role-name
   - warning[empty-playbook]
   - role-name[path]
   ## yamllint default
