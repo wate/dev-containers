@@ -50,7 +50,7 @@ if [ ! -f ~/.inputrc ]; then
     echo "set completion-ignore-case on">~/.inputrc
 fi
 
-pip install --user mycli ansible ansible-lint pre-commit
+pip3 install --user mycli ansible
 
 source ~/.bashrc
 
