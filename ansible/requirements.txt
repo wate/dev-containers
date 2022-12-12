@@ -2,5 +2,4 @@ passlib
 hvac
 ansible-lint
 pre-commit
-# molecule[lint]
-# dns-lexicon[full]
+molecule[lint]

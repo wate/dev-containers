@@ -1,0 +1,27 @@
+---
+## https://ansible-lint.readthedocs.io/configuring/
+
+## min, basic, moderate,safety, shared, production
+# profile: null
+
+# Ansible-lint completely ignores rules or tags listed below
+# skip_list: []
+
+# Ansible-lint does not fail on warnings from the rules or tags listed below
+warn_list:
+  - avoid-implicit
+  - experimental
+  - fqcn[action]
+  - fqcn[redirect]
+  - jinja[spacing]
+  - name[casing]
+  - name[play]
+  - name[prefix]
+  - role-name,
+  - warning[empty-playbook]
+  - role-name[path]
+  ## yamllint default
+  - yaml[comments]
+  - yaml[comments-indentation]
+  - yaml[document-start]
+  - yaml[truthy]
