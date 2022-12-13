@@ -23,7 +23,7 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 #    && rm -rf /tmp/pip-tmp
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends bash-completion tig direnv silversearcher-ag vim exa fonts-noto-cjk \
+    && apt-get -y install --no-install-recommends bash-completion tig direnv pre-commit silversearcher-ag vim exa fonts-noto-cjk \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # [Optional] Uncomment this line to install global node packages.
