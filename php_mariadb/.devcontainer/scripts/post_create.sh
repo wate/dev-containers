@@ -92,6 +92,8 @@ if [ -f package.json ]; then
     npm install
 fi
 
+git config --global --add safe.directory ${PWD}
+
 if [ -f "$(dirname $0)/post_create.yml" ]; then
     ansible-playbook -i 127.0.0.1, -c local --diff "$(dirname $0)/post_create.yml"
 fi
