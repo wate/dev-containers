@@ -27,15 +27,17 @@ fi
 if [ ! -e ~/.bash-git-prompt ]; then
     git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
     cat << EOT >>~/.bashrc
+# BEGIN bash-git-prompt setting ANSIBLE MANAGED BLOCK
 if [ -f "\$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     GIT_PROMPT_ONLY_IN_REPO=1
     source \$HOME/.bash-git-prompt/gitprompt.sh
 fi
+# END bash-git-prompt setting ANSIBLE MANAGED BLOCK
 EOT
 
 fi
 
-pip3 install --user mycli ansible mkdocs-material mkdocs-tooltips  mkdocs-graphviz plantuml-markdown lizard
+pip3 install --user mycli ansible ansible-lint mkdocs-material mkdocs-tooltips  mkdocs-graphviz plantuml-markdown lizard
 
 source ~/.bashrc
 
@@ -92,4 +94,8 @@ fi
 
 if [ -f "$(dirname $0)/post_create.yml" ]; then
     ansible-playbook -i 127.0.0.1, -c local --diff "$(dirname $0)/post_create.yml"
+fi
+
+if [ -f "${PWD}/.devcontainer/my_env.yml" ]; then
+    ansible-playbook -i 127.0.0.1, -c local "${PWD}/.devcontainer/my_env.yml"
 fi
