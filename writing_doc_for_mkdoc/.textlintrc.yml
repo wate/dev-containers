@@ -1,0 +1,14 @@
+---
+filters: {}
+rules:
+  ## https://github.com/textlint-ja/textlint-rule-preset-ja-technical-writing
+  preset-ja-technical-writing: true
+  ## https://github.com/textlint-ja/textlint-rule-preset-ja-spacing
+  preset-ja-spacing: true
+  ## https://github.com/textlint-rule/textlint-rule-prh
+  prh:
+    rulePaths:
+      - prh.yml
+      # - names.yml
+      # - abbreviations.yml
+      # - typo.yml

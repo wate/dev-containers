@@ -2,7 +2,7 @@
 ## Default state for all rules
 default: true
 ## Path to configuration file to extend
-extends: null
+extends:
 ### ------------------
 ## MD001 - Heading levels should only increment by one level at a time
 # header-increment: true
@@ -20,9 +20,9 @@ header-style:
 ## MD006 - Consider starting bulleted lists at the beginning of the line
 # ul-start-left: true
 ## MD007 - Unordered list indentation
-# ul-indent:
-#   # Spaces for indent
-#   indent: 2
+ul-indent:
+  # Spaces for indent
+  indent: 4
 #   # Whether to indent the first level of the list
 #   start_indented: false
 #   # Spaces for first level indent (when start_indented is set)
@@ -50,9 +50,9 @@ header-style:
 #   # Consecutive blank lines
 #   maximum: 1
 ## MD013 - Line length
-# line-length:
-#   # Number of characters
-#   line_length: 80
+line-length:
+  # Number of characters
+  line_length: 120
 #   # Number of characters for headings
 #   heading_line_length: 80
 #   # Number of characters for code blocks
@@ -86,11 +86,9 @@ header-style:
 # MD023 - Headings must start at the beginning of the line
 # header-start-left: true
 # MD024 - Multiple headings with the same content
-# no-duplicate-header:
-#   # Only check sibling headings
-#   allow_different_nesting: false
-#   # Only check sibling headings
-#   siblings_only: false
+no-duplicate-header:
+  # Only check sibling headings
+  siblings_only: true
 ## MD025 - Multiple top-level headings in the same document
 # single-title:
 #   # Heading level
@@ -130,7 +128,7 @@ header-style:
 #   # Allowed elements
 #   allowed_elements: []
 ## MD034/no-bare-urls - Bare URL used
-# no-bare-urls: true
+no-bare-urls: false
 ## MD035 - Horizontal rule style
 # hr-style:
 #   # Horizontal rule style
@@ -146,7 +144,7 @@ header-style:
 ## MD039 - Spaces inside link text
 # no-space-in-links: true
 ## MD040 - Fenced code blocks should have a language specified
-# fenced-code-language: true
+fenced-code-language: false
 ## MD041 - First line in a file should be a top-level heading
 # first-line-heading:
 #   # Heading level

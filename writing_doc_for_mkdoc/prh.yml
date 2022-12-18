@@ -1,0 +1,86 @@
+---
+## @see https://github.com/textlint-rule/textlint-rule-prh
+version: 1
+rules:
+  ### Abbreviations
+  - expected: スプレッドシート
+    pattern: スプシ
+  ### 長音
+  - expected: ベンダー
+    pattern: /ベンダ(?!ー)/
+  - expected: サーバー
+    pattern: /サーバ(?!ー)/
+  - expected: カテゴリー
+    pattern: /カテゴリ(?!ー)/
+  ### OS
+  - expected: Linux
+  - expected: Windows
+  - expected: Mac
+    options:
+      wordBoundary: true
+  - expected: Android
+  - expected: iOS
+    options:
+      wordBoundary: true
+  ## Browser
+  - expected: Firefox
+  - expected: Chrome
+  - expected: Edge
+  ### Language
+  - expected: PHP
+  - expected: Node.js
+    patterns:
+      - /node\.js/i
+      - /node(?!\.js)/i
+  - expected: Python
+  - expected: Ruby
+  - expected: TypeScript
+  - expected: JavaScript
+  - expected: Rust
+  - expected: Go
+    pattern: /Golang/i
+  - expected: HTML
+  - expected: CSS
+  - expected: Sass
+  ### Format
+  - expected: Markdown
+  - expected: reStructuredText
+  - expected: AsciiDoc
+  - expected: YAML
+  - expected: JSON
+  - expected: TOML
+  ## Editor / IDE
+  - expected: Visual Studio Code
+  - expected: Vim
+  - expected: Emacs
+  - expected: IntelliJ IDEA
+    pattern: /IntelliJ(?! IDEA)/i
+  - expected: PyCharm
+  - expected: RubyMine
+  - expected: PhpStorm
+  - expected: WebStorm
+  - expected: Eclipse
+  - expected: NetBeans
+  ### Configuration management
+  - expected: Ansible
+  - expected: Terraform
+  - expected: Chef
+  - expected: Puppet
+  - expected: Packer
+  ## Orchestration
+  - expected: Kubernetes
+  - expected: Capybara
+  - expected: Deployer
+  ## BTS / ITS
+  - expected: Redmine
+  - expected: Backlog
+    patterns:
+      - /Backlog/i
+      - バックログ
+  - expected: Jira
+  - expected: Confluence
+  - expected: Asana
+  - expected: Trac
+    options:
+      wordBoundary: true
+  - expected: Bugzilla
