@@ -61,3 +61,4 @@ plugins:
   - search
   - tags
   - tooltips
+  - table-reader
