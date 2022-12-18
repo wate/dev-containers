@@ -4,8 +4,6 @@
 ## --------------
 # Material for MkDocs
 mkdocs-material
-# MkDocs Bootswatch Themes
-mkdocs-bootswatch
 
 ## --------------
 # Plugins
@@ -13,8 +11,6 @@ mkdocs-bootswatch
 ## [MkDocs Tooltips](https://roipoussiere.frama.io/mkdocs-tooltips/)
 mkdocs-tooltips
 ## [mkdocs-alias-plugin](https://github.com/EddyLuten/mkdocs-alias-plugin)
-mkdocs-alias-plugin
-## [mkdocs-graphviz](https://gitlab.com/rodrigo.schwencke/mkdocs-graphviz]
 mkdocs-graphviz
 ## [PlantUML Extension for Python-Markdown](https://github.com/mikitex70/plantuml-markdown]
 plantuml-markdown
