@@ -60,5 +60,7 @@ markdown_extensions:
 plugins:
   - search
   - tags
+  ## https://roipoussiere.frama.io/mkdocs-tooltips/
   - tooltips
+  ## https://github.com/timvink/mkdocs-table-reader-plugin
   - table-reader
