@@ -79,21 +79,15 @@ EOT
 
 cat << EOT >~/.myclirc
 [main]
-# Enables context sensitive auto-completion. If this is disabled then all
-# possible completions will be listed.
 smart_completion = True
-
-# Multi-line mode allows breaking up the sql statements into multiple lines. If
-# this is set to True, then the end of the statements must have a semi-colon.
-# If this is set to False then sql statements can't be split into multiple
-# lines. End of line (return) is considered as the end of the statement.
 multi_line = False
-
-# Enable the pager on startup.
 enable_pager = False
-
-# Skip intro info on startup and outro info on exit
 less_chatty = True
+[alias_dsn]
+dev = mysql://[user[:password]@][host][:port][/dbname]
+test = mysql://[user[:password]@][host][:port][/dbname]
+stg = mysql://[user[:password]@][host][:port][/dbname]
+prod = mysql://[user[:password]@][host][:port][/dbname]
 EOT
 
 if [ ! -e "${BASE_DIR}/config/database.yml" ]; then
