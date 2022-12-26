@@ -13,10 +13,7 @@
                 "files.associations": {
                     "deploy.yml": "ansible",
                     "release.yml": "ansible"
-                },
-                "emmet.extensionsPath": [
-                    "/home/vscode/emmet/extensions"
-                ]
+                }
             },
             "extensions": [
                 "mikestead.dotenv",
